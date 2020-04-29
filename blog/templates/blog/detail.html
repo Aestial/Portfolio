@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-<head>    
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
     <meta name="generator" content="Jekyll v3.8.6" />
-    <title>Jaime Hernández</title>
+    <title>{{ blog.title }}- Jaime Hernández</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/" />
 
@@ -29,59 +30,25 @@
                     <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
                     <a class="nav-item nav-link" href="https://github.com/Aestial" target="_blank">Github</a>
                     <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">About</a>
-                    <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>                    
+                    <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main role="main">
-        <section class="jumbotron text-center">
-            <div class="container">                                
-                <h1>Hi, I'm Jaime Hernández</h1>
-                <p class="lead text-muted">
-                    My name is Jaime and I love to make all kind of visual software using web technologies and game engines.
-                </p>                
-                <p>
-                    <a href="mailto:aestial@me.com" class="btn btn-primary my-2">Contact me!</a>
-                    <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
-                </p>
-                <img class="img-fluid" src="{% static 'james.png' %}" width="180", height="180">
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    
-                    {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}" />                            
-                            <div class="card-body">
-                                <p class="card-text">
-                                    {{ job.title }}
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <!-- <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">
-                                            View more
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">
-                                            Edit
-                                        </button>
-                                    </div> -->
-                                    <small class="text-muted">
-                                        {{ job.tags }}    
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                </div>
-            </div>
+        <div class="container">
+            <h1 class="text-center pt-4">{{ blog.title }}</h1>
+            <p class="small text-muted text-center">
+                {{ blog.pub_date }}
+            </p>
+            <br />
+            <img class="img-fluid" src="{{ blog.image.url }}"/>
+            <br />
+            <hr />
+            <p class="text-muted">
+                {{ blog.content }}
+            </p>
         </div>
     </main>
 
@@ -92,7 +59,7 @@
             </p>
             <!-- <p class="float-right">
                 <a href="#">Back to top</a>
-            </p> -->            
+            </p> -->
             <!-- <p>
                 New to Bootstrap?
                 <a href="https://getbootstrap.com/">Visit the homepage</a>
