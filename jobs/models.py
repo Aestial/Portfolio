@@ -14,7 +14,7 @@ class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
     title = models.CharField(max_length=50, default="Image title")
     description = models.CharField(max_length=80, default="Image description")
-    image = models.ImageField(upload_to='images/jobs/', default='/static/default/img.png')
+    image = models.ImageField(upload_to='images/jobs/', default='/default/img.png')
 
     def __str__(self):
         return self.title
