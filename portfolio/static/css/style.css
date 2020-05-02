@@ -1,10 +1,30 @@
+/* HEADER NAVBAR Brand Font size */
+.navbar-brand {
+    font-size: 1.33rem;
+}
+/* HOME JUMBOTRON Avatar photo mask */
 .avatar {
     clip-path: circle(45% at center);
 }
+/* HOME Jobs Album image */
 .cover {
     object-fit: cover;
     width: 100%;
 }
+/* FOOTER Font Awesome Icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+.fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+/* JOB DETAIL gallery background image and overlay */
 .gallery-img {
     position: relative;
     width: 100%;
