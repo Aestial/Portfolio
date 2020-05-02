@@ -2,13 +2,12 @@
 {% load static %}
 {% block content %}
 <main role="main">
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center mb-0">
         <div class="container">
-            <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="130" , height="130">
+            <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="128" , height="128">
             <h1>Hi, I'm Jaime Hernández</h1>
             <p class="lead text-muted">
-                My name is Jaime and I love to make all kind of visual software using web technologies and game
-                engines.
+                AR/VR/Game Developer - Programmer
             </p>
             <p>
                 <a href="mailto:aestial@me.com" class="btn btn-primary my-2">Contact me!</a>
@@ -16,41 +15,41 @@
             </p>                
         </div>
     </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-
-                {% for job in jobs.all %}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top cover" src="{{ job.images.first.image.url }}" style="max-height:150px;"/>
-                        <div class="card-body">
-                            <a class="" href="{% url 'detail' job.id %}">
-                                <h5 class="card-text">
-                                    {{ job.title }}
-                                </h5>
-                            </a>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">
-                                        View more
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">
-                                        Edit
-                                    </button>
-                                </div> -->
-                                <small class="text-muted">
-                                    {{ job.tags }}
-                                </small>
+    <section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">    
+                    {% for job in jobs.all %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top cover" src="{{ job.images.first.image.url }}" style="max-height:150px;"/>
+                            <div class="card-body">
+                                <a class="" href="{% url 'detail' job.id %}">
+                                    <h5 class="card-text">
+                                        {{ job.title }}
+                                    </h5>
+                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                                            View more
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                                            Edit
+                                        </button>
+                                    </div> -->
+                                    <small class="text-muted">
+                                        {{ job.tags }}
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
+    
                 </div>
-                {% endfor %}
-
             </div>
         </div>
-    </div>
+    </section>
 </main>
 {% endblock %}
