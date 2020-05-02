@@ -9,5 +9,6 @@ class JobImageInline(admin.TabularInline):
 
 class JobAdmin(admin.ModelAdmin):
     inlines = [ JobImageInline, ]
+    ordering = ['-start_date']
 
 admin.site.register(Job, JobAdmin)
