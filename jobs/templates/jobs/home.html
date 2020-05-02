@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-<head>    
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
@@ -14,6 +15,15 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <style>
+        .avatar {
+            clip-path: circle(45% at center);
+        }
+        .cover {
+            object-fit: cover;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,7 +39,7 @@
                     <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
                     <a class="nav-item nav-link" href="https://github.com/Aestial" target="_blank">Github</a>
                     <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">About</a>
-                    <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>                    
+                    <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
                 </div>
             </div>
         </nav>
@@ -37,32 +47,33 @@
 
     <main role="main">
         <section class="jumbotron text-center">
-            <div class="container">                                
+            <div class="container">
                 <h1>Hi, I'm Jaime Hernández</h1>
                 <p class="lead text-muted">
-                    My name is Jaime and I love to make all kind of visual software using web technologies and game engines.
-                </p>                
+                    My name is Jaime and I love to make all kind of visual software using web technologies and game
+                    engines.
+                </p>
                 <p>
                     <a href="mailto:aestial@me.com" class="btn btn-primary my-2">Contact me!</a>
                     <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
                 </p>
-                <img class="img-fluid" src="{% static 'james.png' %}" width="180", height="180">
+                <img class="avatar img-fluid" src="{% static 'james.png' %}" width="180" , height="180">
             </div>
         </section>
 
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
-                    
+
                     {% for job in jobs.all %}
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.images.first.image.url }}" />       
+                            <img class="card-img-top cover" src="{{ job.images.first.image.url }}" style="max-height:150px;"/>
                             <div class="card-body">
-                                <a href="{% url 'detail' job.id %}">
-                                    <h4 class="card-text">
+                                <a class="" href="{% url 'detail' job.id %}">
+                                    <h5 class="card-text">
                                         {{ job.title }}
-                                    </h4>
+                                    </h5>
                                 </a>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <!-- <div class="btn-group">
@@ -74,7 +85,7 @@
                                         </button>
                                     </div> -->
                                     <small class="text-muted">
-                                        {{ job.tags }}    
+                                        {{ job.tags }}
                                     </small>
                                 </div>
                             </div>
@@ -94,7 +105,7 @@
             </p>
             <!-- <p class="float-right">
                 <a href="#">Back to top</a>
-            </p> -->            
+            </p> -->
             <!-- <p>
                 New to Bootstrap?
                 <a href="https://getbootstrap.com/">Visit the homepage</a>
