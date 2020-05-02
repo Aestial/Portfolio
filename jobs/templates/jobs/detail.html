@@ -100,7 +100,7 @@
             <br />
             <hr />
             <p class="text-muted">
-                {{ job.body }}
+                {{ job.body | safe | linebreaks}}
             </p>
         </div>
     </main>
