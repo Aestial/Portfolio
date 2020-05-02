@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create a Job
 class Job(models.Model):
@@ -6,6 +7,10 @@ class Job(models.Model):
     summary = models.CharField(max_length=200)
     body = models.TextField(default="HTML Body!")
     tags = models.CharField(max_length=255, default="")
+    start_date = models.DateField(default=datetime.now, blank=True)
+
+    def start_date_pretty(self):
+        return self.start_date.strftime('%b, %Y')
 
     def __str__(self):
         return self.title
