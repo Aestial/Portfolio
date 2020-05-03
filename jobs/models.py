@@ -9,6 +9,9 @@ class Job(models.Model):
     tags = models.CharField(max_length=255, default="")
     start_date = models.DateField(default=datetime.now, blank=True)
 
+    def cover(self):
+        return self.images.filter(is_cover=True).first()
+
     def start_date_pretty(self):
         return self.start_date.strftime('%b, %Y')
 
@@ -17,9 +20,10 @@ class Job(models.Model):
 
 class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, default="Image title")
+    image = models.ImageField(upload_to='images/jobs/', default='/default/img.png')        
     description = models.CharField(max_length=80, default="Image description")
-    image = models.ImageField(upload_to='images/jobs/', default='/default/img.png')
+    title = models.CharField(max_length=50, default="Image title")
+    is_cover = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

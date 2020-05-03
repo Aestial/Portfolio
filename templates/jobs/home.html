@@ -22,7 +22,7 @@
                     {% for job in jobs.all %}
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top cover" src="{{ job.images.first.image.url }}" style="max-height:150px;"/>
+                            <img class="card-img-top cover" src="{{ job.cover.image.url }}" style="max-height:150px;"/>
                             <div class="card-body">
                                 <a class="" href="{% url 'detail' job.id %}">
                                     <h5 class="card-text">
