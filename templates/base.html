@@ -20,6 +20,14 @@
 
     <!-- Custom style -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <!-- Resize Iframe -->
+    <script>
+        function resizeIframe(obj) {
+            console.log("Resizing iframe!!");
+            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+    </script>
 </head>
 
 <body>
