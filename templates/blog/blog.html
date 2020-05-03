@@ -12,7 +12,7 @@
         <br />
         <hr />
         <p class="text-muted">
-            {{ blog.content }}
+            {{ blog.content | safe | linebreaks }}
         </p>
     </div>
 </main>
