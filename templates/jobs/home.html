@@ -4,8 +4,9 @@
 <main role="main">
     <section class="jumbotron text-center mb-0">
         <div class="container">
-            <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="128" , height="128">
-            <h1>Hi, I'm Jaime Hernández</h1>
+            <!-- <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="128" , height="128"> -->
+            <div class="canvas-container"></div>
+            <h1>Hello, I'm Jaime</h1>
             <p class="lead text-muted">
                 AR/VR/Game Developer - Programmer
             </p>
@@ -52,4 +53,6 @@
         </div>
     </section>
 </main>
+<script src="{% static 'js/three.js' %}"></script>
+<script src="{% static 'js/torusknot.js' %}"></script>
 {% endblock %}
