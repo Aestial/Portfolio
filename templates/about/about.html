@@ -130,14 +130,14 @@
                             {{ cert.organization }}
                         </span>
                     </div>
-                    <div class="col-8 d-lg-none">                       
-                        <p>
+                    <div class="col-8 d-lg-none py-2">                       
+                        <span>
                             From {{ cert.start_date_pretty }}
                             to {{ cert.end_date_pretty }}
-                        </p>
+                        </span>
                     </div>
                     <div class="col-12">
-                        <p>
+                        <p class="pt-lg-2">
                             <a
                             class="btn btn-primary btn-sm font-weight-bold"
                             href="{{ cert.url }}"
