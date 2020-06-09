@@ -3,7 +3,7 @@ from .models import Job
 
 # Create your views here.
 def home(request):
-    jobs = Job.objects.order_by('-start_date')    
+    jobs = Job.objects.all    
     return render(request, 'jobs/home.html', {'jobs':jobs})
 
 def detail(request, job_id):

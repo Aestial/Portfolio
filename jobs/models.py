@@ -8,6 +8,7 @@ class Job(models.Model):
     body = models.TextField(default="HTML Body!")
     tags = models.CharField(max_length=255, default="")
     start_date = models.DateField(default=datetime.now, blank=True)
+    is_pinned = models.BooleanField(default=False)
 
     def cover(self):
         return self.images.filter(is_cover=True).first()
@@ -17,6 +18,9 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta():
+        ordering = ['-is_pinned', '-start_date']
 
 class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)

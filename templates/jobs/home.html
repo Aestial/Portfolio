@@ -12,20 +12,20 @@
                 AR/VR/Game Developer - Programmer
             </p>
             <p>
-                <a href="mailto:aestial@me.com" class="btn btn-primary my-2">Contact me!</a>
+                <a href="mailto:aestial@me.com" class="btn btn-primary mt-2">Contact me!</a>
                 <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
             </p>                
         </div>
     </section>
     <section>
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">    
+        <div class="album py-2 bg-light">
+            <div class="container-fluid">
+                <div class="row">
                     {% for job in jobs.all %}
-                    <div class="col-md-4">                        
-                        <div class="card mb-4 shadow-sm cover">    
+                    <div class="col-sm-6 col-lg-4 px-1">                        
+                        <div class="card mb-2 shadow-sm cover">    
                             {% thumbnail job.cover.image "384x216" crop="center" as im %}
-                            <img class="card-img-top cover-img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                            <img class="card-img cover-img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                             {% endthumbnail %}                            
                             <div class="card-img-overlay cover-info bg-primary">
                                 <a class="" href="{% url 'detail' job.id %}">
