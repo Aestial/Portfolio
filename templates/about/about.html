@@ -57,17 +57,15 @@
                     <div class="col-12">
                         <p class=" p-0 font-weight-light">
                             {{ exp.body | safe | linebreaks }}
-                            <br />
                         </p>
                     </div>
                     <div class="col-12">
                         <p class=" p-0 font-weight-light">
                             {{ exp.techs }}
-                            <br />
                         </p>
                     </div>
                 </div>            
-            </div>
+            </div>            
             {% endfor %}
         </div>
         <div class="container  bg-light">
@@ -97,18 +95,16 @@
                     </div>
                     <div class="col-12">
                         <p class=" p-0 font-weight-light">
-                            {{ exp.body | safe | linebreaks }}
-                            <br />
+                            {{ exp.body | safe | linebreaks }}                            
                         </p>
                     </div>
                     <div class="col-12">
                         <p class=" p-0 font-weight-light">
-                            {{ exp.thesis }}
-                            <br />
+                            {{ exp.thesis }}                            
                         </p>
                     </div>
                 </div>            
-            </div>
+            </div>            
             {% endfor %}
         </div>
         <div class="container  bg-light">
@@ -140,24 +136,27 @@
                             to {{ cert.end_date_pretty }}
                         </p>
                     </div>
-                    <div class="col-12 py-2">
-                        <a
-                        class="btn btn-primary btn-sm font-weight-bold"
-                        href="{{ cert.url }}"
-                        role="button"
-                        target="_blank"
-                        >Verify
-                        </a>
+                    <div class="col-12">
+                        <p>
+                            <a
+                            class="btn btn-primary btn-sm font-weight-bold"
+                            href="{{ cert.url }}"
+                            role="button"
+                            target="_blank"
+                            >Verify
+                            </a>
+                        </p>                        
                     </div>                    
                 </div>
             </div>
             {% endfor %}
         </div>
+        </br>
         <div class="container  bg-light">
             <div class="container text-primary px-4">
-                <h2 class="py-2">Skills</h2>
+                <h2 class="py-3">Skills</h2>
             </div>
-            <div class="row justify-content-center py-4">
+            <div class="row justify-content-center">
                 <div class="col-2 pr-0 d-none d-lg-block">                    
                 </div>
                 <div class="col-11 col-lg-9 text-justify text-lg-left">
@@ -172,22 +171,23 @@
                 </div>
             </div>
         </div>
+        </br>
         <div class="container  bg-light">
             <div class="container text-primary px-4">
-                <h2 class="py-2">Idioms</h2>
+                <h2 class="py-3">Idioms</h2>
             </div>
-            <div class="row justify-content-center py-4">
+            <div class="row justify-content-center">
                 <div class="col-2 pr-0 d-none d-lg-block">
                 </div>
                 <div class="col-11 col-lg-9 text-justify text-lg-left">
                     {% for idiom in idioms.all %}
                     <div class="row align-items-center">
-                        <div class="col-6">
-                            <a class="fa fa-icon fa-globe"></a>
-                            <span class="h6 pl-lg-4">{{ idiom.name }}</span>
+                        <div class="col-5 pr-0">
+                            <a class="fa fa-icon fa-globe p-1"></a>
+                            <span class="align-text-bottom pl-lg-4">{{ idiom.name }}</span>
                         </div>
-                        <div class="col-6">
-                            {{ idiom.proficiency }}
+                        <div class="col-7">
+                            <span class="align-text-bottom">{{ idiom.proficiency }}</span>                            
                         </div>
                     </div>
                     {% endfor %}
