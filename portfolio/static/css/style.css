@@ -7,9 +7,18 @@
     clip-path: circle(45% at center);
 }
 /* HOME Jobs Album image */
-.cover {
+.cover-img {
     object-fit: cover;
     width: 100%;
+}
+.cover-info {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.25s linear;
+}
+.cover:hover > .cover-info {
+    visibility: visible;
+    opacity: 0.9;
 }
 /* FOOTER Font Awesome Icons */
 .fa {

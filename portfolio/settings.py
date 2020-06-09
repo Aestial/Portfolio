@@ -34,12 +34,15 @@ INSTALLED_APPS = [
     'about.apps.AboutConfig',
     'jobs.apps.JobsConfig',
     'blog.apps.BlogConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
