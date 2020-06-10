@@ -68,12 +68,14 @@
 
 /* LSP */
 svg {
-    position: absolute;
+    position: fixed;
     visibility: hidden;
-    /* width:55%; */
 }
 .svg-img {
-    visibility: hidden;
-    width: 50%;
-    position: absolute;
+    display: none;
+}
+body {
+    margin: 0px;
+    overflow-x: hidden;
+    width: 100%;
 }

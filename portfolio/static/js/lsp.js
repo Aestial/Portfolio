@@ -177,9 +177,9 @@ function init() {
 function onWindowResize() {
     windowHalfX = window.innerWidth / 2;
     windowHalfY = window.innerHeight / 2;
-    //renderer.setSize( window.innerWidth, window.innerHeight );
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    // renderer.setSize( CANVAS_WIDTH, CANVAS_WIDTH );
+    // camera.aspect = CANVAS_WIDTH / CANVAS_WIDTH;
+    // camera.updateProjectionMatrix();
 }
 
 function onMouseMove(event) {
