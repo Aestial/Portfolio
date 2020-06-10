@@ -83,19 +83,33 @@
                             {% thumbnail job.cover.image "480x320" crop="center" as im %}
                             <img class="card-img cover-img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
                             {% endthumbnail %}                            
-                            <div class="card-img-overlay cover-info bg-primary">
-                                <a class="" href="{% url 'detail' job.id %}">
-                                    <div>
-                                        <h5 class="card-text text-white">
+                            <div class="card-img-overlay cover-info d-flex bg-primary">
+                                <div class="container p-4 align-self-center">
+                                    <div class="col-12">
+                                        <h4 class="card-text text-white">
                                             {{ job.title }}
-                                        </h5>                                        
+                                        </h4>                                        
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="col-12">
+                                        <p class="text-white">
+                                            {{ job.summary }}
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
                                         <p class="small text-white">
                                             {{ job.tags }}
                                         </p>
-                                    </div>                                    
-                                </a>
+                                    </div>
+                                    <div class="col-12 align-self-bottom text-right">
+                                        <a  
+                                            href="{% url 'detail' job.id %}"
+                                            class="fa fa-cover fa-plus-circle text-white"
+                                        ></a>
+                                        <a                                              
+                                            class="cover-close fa fa-cover fa-times-circle text-white d-sm-none"
+                                        ></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,6 +119,7 @@
         </div>
     </section>
 </main>
+
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js" integrity="sha256-gSh8eotzb/CVvCREGPUNgIWuDnTYnZvVOQnRrP1eDjI=" crossorigin="anonymous"></script> -->
 <script src="{% static 'js/three.min.js' %}"></script>
 <script src="{% static 'js/RequestAnimationFrame.js' %}"></script>
@@ -412,9 +427,6 @@ void main() {
 }
 </script>
 <script>
-    //var GLOBAL_PATH = '{{ STATIC_PATH }}'; 
-    //var diffTexture_path = GLOBAL_PATH + '/img/lsp_diff.png';
-    //var displacementTexture_path = GLOBAL_PATH + '/img/lsp_disp.png';
     var diffTexture_path = "{% static 'img/lsp_diff.png' %}";
     var displacementTexture_path = "{% static 'img/lsp_disp.png' %}";
 </script>
