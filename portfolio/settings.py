@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'django_unused_media',
     'sorl.thumbnail',
+
 ]
 
 MIDDLEWARE = [
