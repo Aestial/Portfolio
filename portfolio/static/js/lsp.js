@@ -12,8 +12,7 @@ var noiseScale = 0.3;
 var mouseUseMax = 100;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
-var material;
-var outlineMaterial;
+var material, outlineMaterial;
 var start = Date.now();
 
 var svg, svgData, canvas, svgSize, ctx, img;
@@ -92,16 +91,16 @@ function init() {
         fragmentShader: document.getElementById( 'fragmentShader' ).textContent
     } );
 
-    // outlineMaterial = new THREE.ShaderMaterial( {
-    //     uniforms: {
-    //     tDisp: { type: "t", value: displacementTexture },
-    //     time: { type: "f", value: 0 },
-    //     weight: { type: "f", value: 0 },
-    //     offset: {type: "f", value: 0.01 }
-    //     },
-    //     vertexShader: document.getElementById( 'vertexShader' ).textContent,
-    //     fragmentShader: document.getElementById( 'fragmentShader' ).textContent
-    // } );
+    outlineMaterial = new THREE.ShaderMaterial( {
+        uniforms: {
+        tDisp: { type: "t", value: displacementTexture },
+        time: { type: "f", value: 0 },
+        weight: { type: "f", value: 0 },
+        offset: {type: "f", value: 0.01 }
+        },
+        vertexShader: document.getElementById( 'vertexShader' ).textContent,
+        fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+    } );
     
     mesh = new THREE.Mesh( new THREE.IcosahedronGeometry( 1, 5 ), material );
     // outlineMesh = new THREE.Mesh( new THREE.IcosahedronGeometry( 1, 5 ), outlineMaterial );
@@ -209,10 +208,10 @@ function render() {
     //var weight =  0.5 * ( .5 + .5 * Math.sin( .00025 * ( dateNow - start ) ) );
     var weight = Math.min(mouseUse,mouseUseMax)/mouseUseMax*noiseScale;
 
-    // if (outlineMaterial) {		 
-    // outlineMaterial.uniforms[ 'time' ].value = material.uniforms[ 'time' ].value = time;
-    // outlineMaterial.uniforms[ 'weight' ].value = material.uniforms[ 'weight' ].value = weight;
-    // }
+    if (outlineMaterial) {		 
+    outlineMaterial.uniforms[ 'time' ].value = material.uniforms[ 'time' ].value = time;
+    outlineMaterial.uniforms[ 'weight' ].value = material.uniforms[ 'weight' ].value = weight;
+    }
     
     if ( face && exceded ) {
     console.log("Left eye anim. Triggered");
