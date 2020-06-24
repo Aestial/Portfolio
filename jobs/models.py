@@ -30,7 +30,7 @@ def validate_image(image):
     max_height = 720
     height = image.height 
     width = image.width
-    error_message = "Image height or width is larger than allowed: "+max_width+"x"+max_height
+    error_message = "Image height or width is larger than allowed: "+str(max_width)+"x"+str(max_height)
     if width > max_width or height > max_height:
         raise ValidationError(error_message)
 
