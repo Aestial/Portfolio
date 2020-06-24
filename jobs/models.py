@@ -30,8 +30,9 @@ def validate_image(image):
     max_height = 720
     height = image.height 
     width = image.width
+    error_message = "Image height or width is larger than allowed: "+max_width+"x"+max_height
     if width > max_width or height > max_height:
-        raise ValidationError("Height or Width is larger than what is allowed")
+        raise ValidationError(error_message)
 
 class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
