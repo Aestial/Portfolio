@@ -80,8 +80,8 @@
                     {% for job in jobs.all %}
                     <div class="col-sm-6 col-lg-4 px-1">                        
                         <div class="card mb-2 shadow-sm cover">    
-                            {% thumbnail job.cover.image "480x320" crop="center" as im %}
-                            <img class="card-img cover-img" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                            {% thumbnail job.cover.image "360x320" crop="center" as im %}
+                            <img class="card-img cover-img" src="{{ im.url }}" >
                             {% endthumbnail %}                            
                             <div class="card-img-overlay cover-info d-flex bg-primary">
                                 <div class="container p-4 align-self-center">

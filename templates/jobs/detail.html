@@ -24,10 +24,12 @@
                         {% else %}
                         <div class="carousel-item">
                         {% endif %}
-                            <div class="gallery-img d-block w-100" style="background-image: url('{{ img.image.url }}');" alt="Slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ img.title }}</h5>
-                                    <p>{{ img.description }}</p>
+                            <div class="bg-black">
+                                <div class="gallery-img d-block w-100" style="background-image: url('{{ img.image.url }}');" alt="Slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>{{ img.title }}</h5>
+                                        <p>{{ img.description }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

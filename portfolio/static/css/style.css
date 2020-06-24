@@ -8,7 +8,7 @@
 }
 /* HOME Jobs Album image */
 .cover-img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
 }
 .cover-info {
@@ -50,14 +50,19 @@
     text-decoration: none;
 }
 /* JOB DETAIL Gallery image size and layout*/
+.bg-black {
+    background-color: black;
+}
+
 .gallery-img {
     position: relative;
     width: 100%;
     height: 70vmin;
-    background-size: cover;
+    /* background-size: cover; */
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: center;
+    background-attachment: scroll;
 }
 /* JOB DETAIL Gallery image caption */
 .gallery-img .carousel-caption {
