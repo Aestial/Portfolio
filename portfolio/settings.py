@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'blog.apps.BlogConfig',
     
+    'divertida.apps.DivertidaConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
