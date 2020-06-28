@@ -1,18 +1,18 @@
 let type = "WebGL";
 
-if(!PIXI.utils.isWebGLSupported()){
+if (!PIXI.utils.isWebGLSupported()){
     type = "canvas";
 }
 PIXI.utils.sayHello(type);
 
 // Create a Pixi Application
 let app = new PIXI.Application({ 
-    width: 680,         // default: 800
-    height: 680,        // default: 600
+    width: 720,         // default: 800
+    height: 650,        // default: 600
     antialias: true,    // default: false
     transparent: false, // default: false
     resolution: 1,       // default: 1
-    backgroundColor: 0xe3e4e6,
+    backgroundColor: 0xC9BAA0,
   }
 );
 
@@ -25,8 +25,12 @@ domContainer.appendChild(app.view);
 // app.renderer.autoResize = true;
 // app.renderer.resize(domContainer.innerWidth, domContainer.innerHeight);
 
-const UNIT_SIZE_PIXELS = 48;
+const GRID_SIZE = 12;
+const MAX_NUMBER = 10;
+
 const DOUBLE_TAP_THRESHOLD = 420;
+
+const UNIT_SIZE_PIXELS = 48;
 const UNIT_NORMAL_ALPHA = 0.66;
 const UNIT_ACTIVE_ALPHA = 0.35;
 
@@ -40,11 +44,34 @@ const UNIT_COLORS = [   0xFFFFFF,
                         0x93D1D0,
                         0xEABEBD,
                         0xEA7267,
-                    ]
+                    ];
 
 let lastTapTime, currentTapTime = 0;
 
-for (let i = 1; i <= 10; i++) {
+const grid = new PIXI.Container();
+app.stage.addChild(grid);
+
+// Create a grid of rectangles
+for (let i = 0; i < GRID_SIZE; i++) {
+    for (let j = 0; j < GRID_SIZE; j++) {
+        const cell = new PIXI.Graphics();
+        cell.lineStyle(1, 0x000000, 0.35);
+        cell.beginFill(0xc9cacb);
+        const x = (j * UNIT_SIZE_PIXELS) + 2 * UNIT_SIZE_PIXELS;
+        const y = (i * UNIT_SIZE_PIXELS) + UNIT_SIZE_PIXELS;
+        cell.drawRect(x, y, UNIT_SIZE_PIXELS, UNIT_SIZE_PIXELS);
+        cell.endFill();
+        cell.id = 1 + (i * j)
+        grid.addChild(cell);
+    }
+}
+
+const container = new PIXI.Container();
+container.sortableChildren = true;
+app.stage.addChild(container);
+
+// TEMP Create bars
+for (let i = 1; i <= MAX_NUMBER; i++) {
     // createNumber(
     //     Math.floor(Math.random() * app.screen.width),
     //     Math.floor(Math.random() * app.screen.height),
@@ -52,7 +79,7 @@ for (let i = 1; i <= 10; i++) {
     // );
     for (let j = 0; j < 1; j++)
     {
-        let x = (i * j * UNIT_SIZE_PIXELS) + 3*UNIT_SIZE_PIXELS/2;
+        let x = (i * j * UNIT_SIZE_PIXELS) + 5*UNIT_SIZE_PIXELS/2;
         let y = i * UNIT_SIZE_PIXELS + UNIT_SIZE_PIXELS/2;
         createNumber(x, y, i);
     }    
@@ -61,7 +88,7 @@ for (let i = 1; i <= 10; i++) {
 function createNumber(x, y, value) 
 {
     let rectangle = new PIXI.Graphics();
-    rectangle.lineStyle(4, 0x000000, 1);
+    rectangle.lineStyle(2, 0x000000, 0.85);
     rectangle.beginFill(0xFFFFFF);
     rectangle.drawRect(0, 0, UNIT_SIZE_PIXELS * value, UNIT_SIZE_PIXELS);
     rectangle.endFill();
@@ -89,11 +116,12 @@ function createNumber(x, y, value)
     
     sprite.x = x;
     sprite.y = y;
+    sprite.zIndex = MAX_NUMBER - value;
 
     sprite.anchor.set(0.5/value, 0.5);
 
     // app.stage.addChild(rectangle);
-    app.stage.addChild(sprite);
+    container.addChild(sprite);
 }
 
 function onDragStart(event) {
@@ -116,8 +144,10 @@ function onDragEnd() {
 function onDragMove() {
     if (this.dragging) {
         const newPosition = this.data.getLocalPosition(this.parent);
+        // CONTINOUS
         // this.x = newPosition.x;
         // this.y = newPosition.y;
+        // DISCRETE
         this.x = Math.floor(newPosition.x/UNIT_SIZE_PIXELS) * UNIT_SIZE_PIXELS + UNIT_SIZE_PIXELS/2;
         this.y = Math.floor(newPosition.y/UNIT_SIZE_PIXELS) * UNIT_SIZE_PIXELS + UNIT_SIZE_PIXELS/2;
     }

@@ -424,9 +424,7 @@ void main() {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.0/pixi.min.js"></script>
 <script>
-    const unit_tex_src = "{% static 'img/unit.png' %}";
-    const unit_tex = PIXI.Texture.from(unit_tex_src)
-    unit_tex.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+    // USE THIS TO RETRIEVE STATIC FILES (Like Textures) TO PIXI.JS
 </script>
 <script src="{% static 'js/numbers-grid.js' %}"></script>
 
