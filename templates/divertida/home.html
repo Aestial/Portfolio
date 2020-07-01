@@ -3,8 +3,8 @@
 {% load thumbnail %}
 {% block content %}
 <main role="main">
-    <section class="jumbotron text-center mb-0">
-        <div id="svgContainer" style="width:100%; height:100%;">
+    <section class="jumbotron text-center mb-1 pt-5 p-4">
+        <!-- <div id="svgContainer" style="width:100%; height:100%;">
             <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -59,14 +59,14 @@
             </g>
     
             </svg>
-        </div>    
-        <div class="container">
+        </div>     -->
+        <div class="">
             <!-- <img class="avatar img-fluid" src="{% static 'img/james.png' %}" width="128" , height="128"> -->
-            <div class="container py-3">
-                <h2 class="font-weight-bold">¡Bienvenido al Demo de Regletas!</h2>
-                <h5>Divertida-mente</h5>
+            <div class="container">
+                <h5 class="">Interactivo de Regletas</h5>
+                <!-- <h5>Divertida-mente</h5> -->
             </div>
-            <div id="pixi-canvas-container" class="pb-3"></div>
+            <div id="pixi-canvas-container" class="m-4"></div>
             <!-- <p>
                 <a type="button" class="btn btn-primary btn-lg text-white" data-toggle="modal" data-target="#canvasModal">Comenzar</a>
             </p>                                         -->
@@ -95,7 +95,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <div class="pixi-container">
+                    <div class="pixi-canvas-container">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -178,13 +178,23 @@ function onTap() {
 
 function resize() {
     let w = getParentDivWidth();
-    let h = w / aspectRatio ;    
+    let h = getParentDivHeight();
+    if (w > h)  // Landscape
+        w = h * aspectRatio;
+    else
+        h = w / aspectRatio;
     app.stage.scale.set(w / width, h / height);
-    app.renderer.resize(w, h); 
+    app.renderer.resize(w, h);
 }
 
 function getParentDivWidth() {
     let width = canvas_container.offsetWidth;
     console.log("Width " + width);
     return width;
-  }
+}
+
+function getParentDivHeight() {
+    let height = canvas_container.offsetHeight;
+    console.log("Height " + height);
+    return height;
+}
