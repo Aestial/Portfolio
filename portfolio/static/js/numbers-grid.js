@@ -30,7 +30,7 @@ let app = new PIXI.Application({
     height: height,        // default: 672
     antialias: true,    // default: false
     transparent: false, // default: false
-    resolution: 2,       // default: 1, retina: 2
+    resolution: 1,       // default: 1
     backgroundColor: 0xE1E2E6
 });
 
