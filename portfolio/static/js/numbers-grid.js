@@ -30,7 +30,9 @@ let app = new PIXI.Application({
     height: height,        // default: 672
     antialias: true,    // default: false
     transparent: false, // default: false
-    resolution: 1,       // default: 1
+    // resolution: 1,       // default: 1
+    resolution: window.devicePixelRatio || 1,
+    autoResize: true,
     backgroundColor: 0xE1E2E6
 });
 
@@ -44,6 +46,8 @@ window.onload = function ()
         type = "canvas";
     }
     PIXI.utils.sayHello(type);
+    PIXI.RESOLUTION = window.devicePixelRatio;
+    console.log("Resolution: " + PIXI.RESOLUTION);
     
     // Add the canvas that Pixi automatically created for you to the HTML document
     canvas_container.appendChild(app.view);
