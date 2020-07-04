@@ -26,8 +26,8 @@ class Job(models.Model):
 
 
 def validate_image(image):
-    max_width = 1280
-    max_height = 720
+    max_width = 1680
+    max_height = 1050
     height = image.height 
     width = image.width
     error_message = "Image height or width is larger than allowed: "+str(max_width)+"x"+str(max_height)
