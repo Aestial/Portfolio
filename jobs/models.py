@@ -23,7 +23,15 @@ class Job(models.Model):
 
     class Meta():
         ordering = ['-is_pinned', '-start_date']
+        
+class JobEmbed(models.Model):
+    job = models.ForeignKey(Job, related_name='embeds', on_delete=models.CASCADE)
+    body = models.TextField(default="Embed iframe")
+    title = models.CharField(max_length=80, default="Image title")
+    description = models.CharField(max_length=140, default="Image description")
 
+    def __str__(self):
+        return self.title
 
 def validate_image(image):
     max_width = 1680
@@ -37,8 +45,8 @@ def validate_image(image):
 class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/jobs/', default='/default/img.png', validators=[validate_image])        
-    description = models.CharField(max_length=80, default="Image description")
-    title = models.CharField(max_length=50, default="Image title")
+    title = models.CharField(max_length=80, default="Image title")
+    description = models.CharField(max_length=140, default="Image description")    
     is_cover = models.BooleanField(default=False)
 
     def __str__(self):

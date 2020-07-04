@@ -9,21 +9,43 @@
                 <br />
                 <div id="gallery-carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        {% for img in job.images.all %}
+                        <!-- Embed -->
+                        {% for img in job.embeds.all %}
                         {% if forloop.first %}
                         <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
                         {% else %}
                         <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
                         {% endif %}
                         {% endfor %}
+                        <!-- Images -->
+                        {% for img in job.images.all %}
+                        <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>                        
+                        {% endfor %}
                     </ol>
                     <div class="carousel-inner">
-                        {% for img in job.images.all %}
+                        <!-- Embed -->
+                        {% for emb in job.embeds.all %}
                         {% if forloop.first %}
                         <div class="carousel-item active">
                         {% else %}
                         <div class="carousel-item">
                         {% endif %}
+                            <div class="bg-black">
+                                <div class="gallery-img d-flex" alt="Slide">
+                                    <div class="iframe-container justify-content-center align-self-center">
+                                        {{ emb.body | safe }}                                 
+                                    </div>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>{{ emb.title }}</h5>
+                                        <p>{{ emb.description }}</p>
+                                    </div>                                
+                                </div>                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Images -->
+                        {% for img in job.images.all %}
+                        <div class="carousel-item">
                             <div class="bg-black">
                                 <div class="gallery-img d-block w-100" style="background-image: url('{{ img.image.url }}');" alt="Slide">
                                     <div class="carousel-caption d-none d-md-block">
