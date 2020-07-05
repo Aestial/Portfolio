@@ -69,26 +69,28 @@
     filter: invert(100%);
 }
 
-.carousel-control-next,
-.carousel-control-prev {
-    filter: invert(100%);
-}
-.carousel-control-next-icon, .carousel-control-prev-icon {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-}
-.carousel-caption {
-    bottom: -20px !important;
-}
-.carousel-control-prev {
-    left: -15% !important;
-}
-.carousel-control-next {
-    right: -15% !important;
-}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .carousel-control-next,
+    .carousel-control-prev {
+        filter: invert(100%);
+    }
+    .carousel-control-next-icon, .carousel-control-prev-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+    .carousel-control-prev {
+        left: -15% !important;
+    }
+    .carousel-control-next {
+        right: -15% !important;
+    }
+ }
+
 /* JOB DETAIL Gallery image caption */
 .gallery-img .carousel-caption {
+    bottom: -20px !important;
     opacity: 0.25;
     transition: opacity .2s ease;
 }
