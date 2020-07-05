@@ -7,7 +7,8 @@
             <div class="col-11 col-lg-9 col-xl-8">
                 <h1 class="text-center">{{ job.title }}</h1>
                 <br />
-                <div id="gallery-carousel" class="carousel slide" data-ride="carousel">
+                <!-- <div id="gallery-carousel" class="carousel slide" data-ride="carousel"> -->
+                <div id="gallery-carousel" class="carousel slide" data-interval="false">
                     <ol class="carousel-indicators">
                         <!-- Embed -->
                         {% for img in job.embeds.all %}
