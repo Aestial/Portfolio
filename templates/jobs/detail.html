@@ -19,7 +19,11 @@
                         {% endfor %}
                         <!-- Images -->
                         {% for img in job.images.all %}
-                        <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>                        
+                        {% if forloop.first and not job.embeds.all %}
+                        <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>                        
+                        {% else %}
+                        <li data-target="#gallery-carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
+                        {% endif %}
                         {% endfor %}
                     </ol>
                     <div class="carousel-inner">
@@ -45,7 +49,11 @@
                         {% endfor %}
                         <!-- Images -->
                         {% for img in job.images.all %}
+                        {% if forloop.first and not job.embeds.all %}
+                        <div class="carousel-item active">
+                        {% else %}
                         <div class="carousel-item">
+                        {% endif %}
                             <div class="bg-black">
                                 <div class="gallery-img d-block w-100" style="background-image: url('{{ img.image.url }}');" alt="Slide">
                                     <div class="carousel-caption d-none d-md-block">

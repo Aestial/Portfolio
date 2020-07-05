@@ -6,9 +6,9 @@ from django.core.exceptions import ValidationError
 
 class Job(models.Model):
     title = models.CharField(max_length=140, default="Job title")
-    summary = models.CharField(max_length=200)
-    body = models.TextField(default="HTML Body!")
-    tags = models.CharField(max_length=255, default="")
+    summary = models.CharField(max_length=200, blank=True)
+    body = models.TextField(default="", blank=True)
+    tags = models.CharField(max_length=255, default="", blank=True)
     start_date = models.DateField(default=datetime.now, blank=True)
     is_pinned = models.BooleanField(default=False)
 
@@ -27,8 +27,8 @@ class Job(models.Model):
 class JobEmbed(models.Model):
     job = models.ForeignKey(Job, related_name='embeds', on_delete=models.CASCADE)
     body = models.TextField(default="Embed iframe")
-    title = models.CharField(max_length=80, default="Image title")
-    description = models.CharField(max_length=140, default="Image description")
+    title = models.CharField(max_length=80, default="Embed title", blank=True)
+    description = models.CharField(max_length=140, default="Embed description", blank=True)
 
     def __str__(self):
         return self.title
@@ -45,8 +45,8 @@ def validate_image(image):
 class JobImage(models.Model):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/jobs/', default='/default/img.png', validators=[validate_image])        
-    title = models.CharField(max_length=80, default="Image title")
-    description = models.CharField(max_length=140, default="Image description")    
+    title = models.CharField(max_length=80, default="Image title", blank=True)
+    description = models.CharField(max_length=140, default="Image description", blank=True)    
     is_cover = models.BooleanField(default=False)
 
     def __str__(self):
