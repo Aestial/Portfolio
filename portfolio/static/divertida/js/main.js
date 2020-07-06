@@ -1,5 +1,5 @@
 const GRID_SIZE = 12;
-const MAX_NUMBER = 10;
+const MAX_VALUE = 10;
 
 const UNIT_SIZE_PIXELS = 48;
 const UNIT_COLORS = [ 
@@ -18,7 +18,7 @@ const UNIT_NORMAL_ALPHA = 0.85;
 const UNIT_ACTIVE_ALPHA = 0.35;
 const DOUBLE_TAP_THRESHOLD = 420;
 
-const width = 672; // default: 672
+const width = 720; // default: 672
 const height = 672; // default: 672
 const aspectRatio = width/height;
 
@@ -33,14 +33,23 @@ let app = new PIXI.Application({
     backgroundColor: 0xE1E2E6
 });
 
-let params = {
-    size : UNIT_SIZE_PIXELS,
-    colors : UNIT_COLORS,
-    normalAlpha : UNIT_NORMAL_ALPHA,
-    activeAlpha : UNIT_ACTIVE_ALPHA,        
-    doubleTapThreshold : DOUBLE_TAP_THRESHOLD,
+let grid_params = {
+    size: UNIT_SIZE_PIXELS,
+    offset: {
+        x: UNIT_SIZE_PIXELS * 2,
+        y: UNIT_SIZE_PIXELS,
+    }
+};
+
+let barman_params = {
+    size: UNIT_SIZE_PIXELS,
+    colors: UNIT_COLORS,
+    normalAlpha: UNIT_NORMAL_ALPHA,
+    activeAlpha: UNIT_ACTIVE_ALPHA,        
+    doubleTapThreshold: DOUBLE_TAP_THRESHOLD,
     width: width,         
     height: height,
+    maxValue: MAX_VALUE,
 };
 
 let canvas_container = document.getElementById("pixi-canvas-container");
@@ -59,8 +68,8 @@ window.onload = function ()
     canvas_container.appendChild(app.view);
     app.view.className = "shadow";
 
-    new grid(GRID_SIZE, UNIT_SIZE_PIXELS, app.stage);
-    new barman(MAX_NUMBER, app.stage, params);
+    new grid(GRID_SIZE, app.stage,grid_params, grid_params);
+    new barman(MAX_VALUE, app.stage, barman_params);
 
     window.addEventListener("resize", resize);
     resize();

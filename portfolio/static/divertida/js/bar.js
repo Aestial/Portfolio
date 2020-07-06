@@ -6,6 +6,7 @@ function bar(value, x, y, parent, params) {
         this.data = event.data;
         this.alpha = params.activeAlpha;
         this.dragging = true;
+        console.log("Moving: " + this.value + ", with z index: " + this.zIndex);
     }    
     this.onDragEnd = function () {
         this.alpha = params.normalAlpha;
@@ -13,7 +14,7 @@ function bar(value, x, y, parent, params) {
         // set the interaction data to null
         this.data = null;
         if (this.x < params.width/2 + params.size && this.x > params.width/2 - params.size && this.y > params.height - params.size) {
-            console.log("Deleted: " + this.zIndex);
+            console.log("Deleted: " + this.value);
             this.delete();
         }
     }
@@ -26,7 +27,7 @@ function bar(value, x, y, parent, params) {
             // DISCRETE
             this.x = Math.floor(newPosition.x/params.size) * params.size + params.size/2;
             this.y = Math.floor(newPosition.y/params.size) * params.size + params.size/2;
-            console.log("Position: " + this.x + ", " + this.y);
+            // console.log("Position: " + this.x + ", " + this.y);
         }
     }    
     this.onTap = function () {
@@ -44,12 +45,12 @@ function bar(value, x, y, parent, params) {
     // Create texture and sprite from shape
     const texture = app.renderer.generateTexture(rectangle);
     this.sprite = new PIXI.Sprite(texture);
+    this.sprite.value = value;
     this.sprite.bar = this;
     this.sprite.alpha = params.normalAlpha;
     this.sprite.x = x;
     this.sprite.y = y;
-    // sprite.zIndex = MAX_NUMBER - value;
-    this.sprite.zIndex = value;    
+    this.sprite.zIndex = params.maxValue - value;
     const xanchor = (value % 2 == 0) ? -0.5/value : 0;
     this.sprite.anchor.set(xanchor + 0.5, 0.5);    
     // Allow to respond to mouse and touch events

@@ -1,4 +1,4 @@
-function grid(size, unit_size, parent) {
+function grid(size, parent, params) {
     this.size = size;
     this.container = new PIXI.Container();
     this.create = function (size) {
@@ -8,9 +8,9 @@ function grid(size, unit_size, parent) {
                 const cell = new PIXI.Graphics();
                 cell.lineStyle(1, 0x636C78, 0.5);
                 cell.beginFill(0x444E5E);
-                const x = (j * unit_size) + unit_size;
-                const y = (i * unit_size) + unit_size;
-                cell.drawRect(x, y, unit_size, unit_size);
+                const x = (j * params.size) + params.offset.x;
+                const y = (i * params.size) + params.offset.y;
+                cell.drawRect(x, y, params.size, params.size);
                 cell.endFill();
                 cell.id = 1 + (i * j)
                 this.container.addChild(cell);
