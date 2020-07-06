@@ -4,15 +4,15 @@ const MAX_VALUE = 10;
 const UNIT_SIZE_PIXELS = 48;
 const UNIT_COLORS = [ 
     0xFFFFFF, //#FFFFFF
-    0xD95863, //#D95863
-    0xCE5B7C, //#CE5B7C
-    0x6FB8D0, //#6FB8D0
-    0x5F6AC0, //#5F6AC0                        
-    0x70CD9D, //#70CD9D
-    0xB9D072, //#B9D072
-    0xE5C858, //#E5C858
-    0xEDC397, //#EDC397
-    0xE59179, //#E59179
+    0xE74547, //#E74547
+    0xAEE548, //#AEE548
+    0xE998C9, //#E998C9
+    0xFFEA00, //#FFEA00
+    0x10992D, //#10992D
+    0x111111, //#111111
+    0x704215, //#704215
+    0x406AF0, //#406AF0
+    0xF57035, //#F57035
 ];
 const UNIT_NORMAL_ALPHA = 0.85;
 const UNIT_ACTIVE_ALPHA = 0.35;
