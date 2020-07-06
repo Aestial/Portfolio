@@ -1,4 +1,4 @@
-function barman(count, unit_size, parent) {
+function barman(count, parent, params) {
     this.container = new PIXI.Container();
     this.container.sortableChildren = true;
     this.count = count;
@@ -6,22 +6,17 @@ function barman(count, unit_size, parent) {
         let evenMultiplier = 0;        
         for (let i = 1; i <= n; i++) {
             evenMultiplier += (i % 2 != 0) ? 1 : 0;
-            
-            let params = {};
-            params.x = (evenMultiplier) * unit_size + (3*unit_size/2);
-            params.y = i * unit_size + unit_size/2;
+            const x = (evenMultiplier) * params.size;
+            const y = i * params.size + params.size/2;
             
             let keyValue = "";
             if (i == 10) keyValue = String(0);
             else keyValue = String(i);
             
-            let keyObject = keyboard(keyValue);
-            // keyObject.press = () => {
-            //     //key object pressed
-            // };
-            keyObject.release = () => {
+            let keyObject = keyboard(keyValue);    
+            keyObject.release = () => { // keyObject.press 
                 console.log(keyValue);
-                new bar (i, this.container, params);
+                new bar (i, x, y, this.container, params);
             };
         }
     }
@@ -31,10 +26,9 @@ function barman(count, unit_size, parent) {
         // TODO: REMOVE
         for (let i = 1; i <= n; i++) {
             evenMultiplier += (i % 2 != 0) ? 1 : 0;
-            let params = {};
-            params.x = (evenMultiplier) * unit_size + (3*unit_size/2);
-            params.y = i * unit_size + unit_size/2;
-            new bar(i, this.container, params);
+            const x = (evenMultiplier) * params.size + (3*params.size/2);
+            const y = i * params.size + params.size/2;
+            new bar(i, x, y, this.container, params);
         }        
     }
     this.input(this.count);
