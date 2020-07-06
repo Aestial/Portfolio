@@ -44,6 +44,7 @@ function bar(value, x, y, parent, params) {
     // Create texture and sprite from shape
     const texture = app.renderer.generateTexture(rectangle);
     this.sprite = new PIXI.Sprite(texture);
+    this.sprite.bar = this;
     this.sprite.alpha = params.normalAlpha;
     this.sprite.x = x;
     this.sprite.y = y;
@@ -67,7 +68,8 @@ function bar(value, x, y, parent, params) {
         .delete = function () {
             parent.removeChild(this);
             console.log(parent.children);
-            this.destroy();
+            delete this.bar;
+            this.destroy();            
         }
     parent.addChild(this.sprite);
 }
