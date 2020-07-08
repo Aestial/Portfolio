@@ -1,7 +1,7 @@
-const GRID_SIZE = 12;
+const GRID_SIZE = { x: 30, y: 22 };
 const MAX_VALUE = 10;
 
-const UNIT_SIZE_PIXELS = 48;
+const UNIT_SIZE_PIXELS = 24;
 const UNIT_COLORS = [ 
     0xFFFFFF, //#FFFFFF
     0xE74547, //#E74547
@@ -18,8 +18,8 @@ const UNIT_NORMAL_ALPHA = 0.85;
 const UNIT_ACTIVE_ALPHA = 0.35;
 const DOUBLE_TAP_THRESHOLD = 420;
 
-const width = 720; // default: 672
-const height = 672; // default: 672
+const width = 790; // default: 672
+const height = 590; // default: 672
 const aspectRatio = width/height;
 
 // Create a Pixi Application

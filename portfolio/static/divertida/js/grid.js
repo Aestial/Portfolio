@@ -3,8 +3,8 @@ function grid(size, parent, params) {
     this.container = new PIXI.Container();
     this.create = function (size) {
         // Create a grid of rectangles
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
+        for (let i = 0; i < size.y; i++) {
+            for (let j = 0; j < size.x; j++) {
                 const cell = new PIXI.Graphics();
                 cell.lineStyle(1, 0x636C78, 0.5);
                 cell.beginFill(0x444E5E);

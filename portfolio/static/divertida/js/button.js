@@ -32,7 +32,7 @@ function button(value, x, y, parent, params) {
     );
     const style = new PIXI.TextStyle({
         fontFamily: 'Arial',
-        fontSize: 30,
+        fontSize: 20,
         // fontStyle: 'italic',
         // fontWeight: 'bold',
         fill: '#fafafa', // ['#ffffff', '#00ff99'], // gradient
@@ -40,9 +40,9 @@ function button(value, x, y, parent, params) {
         strokeThickness: 1,
         dropShadow: true,
         dropShadowColor: '#5f5f5f',
-        dropShadowBlur: 3,
+        dropShadowBlur: 2,
         dropShadowAngle: Math.PI / 6,
-        dropShadowDistance: 2,
+        dropShadowDistance: 1,
         wordWrap: true,
         wordWrapWidth: params.size,
     });
