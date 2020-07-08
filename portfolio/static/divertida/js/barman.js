@@ -17,12 +17,13 @@ function barman(count, parent, params) {
                 new bar(i, x, y, this.bars, params);
             }
         }
+        // TRASH
         const trashSprite = new PIXI.Sprite(trashTexture);
         trashSprite.anchor.set(0.5, 1);
         trashSprite.x = params.width/2;
-        trashSprite.y = params.height + 3;
-        trashSprite.width = params.size * 1.15;
-        trashSprite.height = params.size* 1.15;
+        trashSprite.y = params.height;
+        trashSprite.width = params.size * 1.5;
+        trashSprite.height = params.size* 1.5;
         trashSprite.tint = 0x444E5E; // #444E5E
         this.buttons.addChild(trashSprite);
     }
@@ -34,6 +35,11 @@ function barman(count, parent, params) {
             const y = i * params.size + params.size/2;
             new bar(i, x, y, this.bars, params);
         }        
+    }
+    this.deleteLastChild = function (container) {
+        const barCount = container.children.length;
+        if (barCount > 0)
+            container.getChildAt(barCount-1).delete();
     }
     this.keyboardInput = function (n) {
         let evenMultiplier = 0;        
@@ -50,6 +56,15 @@ function barman(count, parent, params) {
                 new bar (i, x, y, this.bars, params);
             };
         }
+        // TRASH
+        let backspaceKeyObject = keyboard("Backspace");    
+        // backspaceKeyObject.release = () => {
+        //     this.deleteLastChild(this.bars);            
+        // };
+        let deleteKeyObject = keyboard("Delete");    
+        backspaceKeyObject.release = deleteKeyObject.release = () => {            
+            this.deleteLastChild(this.bars);
+        };
     }
     this.createButtons(this.count);
     this.keyboardInput(this.count);
