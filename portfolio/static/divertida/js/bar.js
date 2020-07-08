@@ -6,15 +6,14 @@ function bar(value, x, y, parent, params) {
         this.data = event.data;
         this.alpha = params.activeAlpha;
         this.dragging = true;
-        console.log("Moving: " + this.value + ", with z index: " + this.zIndex);
+        this.select();
     }    
     this.onDragEnd = function () {
         this.alpha = params.normalAlpha;
         this.dragging = false;
         // set the interaction data to null
         this.data = null;
-        if (this.x < params.width/2 + params.size && this.x > params.width/2 - params.size && this.y > params.height - params.size) {
-            console.log("Deleted: " + this.value);
+        if (this.x < params.width/2 + 2*params.size && this.x > params.width/2 - 2*params.size && this.y > params.height - 2*params.size) {
             this.delete();
         }
     }
@@ -50,7 +49,6 @@ function bar(value, x, y, parent, params) {
     this.sprite.alpha = params.normalAlpha;
     this.sprite.x = x;
     this.sprite.y = y;
-    this.sprite.zIndex = params.maxValue - value;
     const xanchor = (value % 2 == 0) ? -0.5/value : 0;
     this.sprite.anchor.set(xanchor + 0.5, 0.5);    
     // Allow to respond to mouse and touch events
@@ -65,12 +63,16 @@ function bar(value, x, y, parent, params) {
         .on('pointerupoutside', this.onDragEnd)
         .on('pointermove', this.onDragMove)
         .on('pointertap', this.onTap);
-    this.sprite
-        .delete = function () {
-            parent.removeChild(this);
-            console.log(parent.children);
-            delete this.bar;
-            this.destroy();            
-        }
+    this.sprite.delete = function () {
+        console.log("Deleted: " + this.value);
+        parent.removeChild(this);
+        console.log(parent.children);
+        delete this.bar;
+        this.destroy();            
+    }
+    this.sprite.select = function () {
+        console.log("Set on top: " + this.value);  
+        parent.setChildIndex(this, parent.children.length-1);
+    }
     parent.addChild(this.sprite);
 }
