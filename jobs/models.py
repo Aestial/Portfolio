@@ -40,7 +40,7 @@ class GalleryEmbed(GalleryElement):
 
 def validate_image(image):
     max_width = 1680
-    max_height = 1050
+    max_height = 1680
     height = image.height 
     width = image.width
     error_message = "Image height or width is larger than allowed: "+str(max_width)+"x"+str(max_height)
