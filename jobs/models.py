@@ -23,15 +23,20 @@ class Job(models.Model):
 
     class Meta():
         ordering = ['-is_pinned', '-start_date']
-        
-class JobEmbed(models.Model):
-    job = models.ForeignKey(Job, related_name='embeds', on_delete=models.CASCADE)
-    body = models.TextField(default="Embed iframe")
-    title = models.CharField(max_length=80, default="Embed title", blank=True)
-    description = models.CharField(max_length=140, default="Embed description", blank=True)
 
+class GalleryElement(models.Model):
+    title = models.CharField(max_length=80, default="Element title", blank=True)
+    description = models.CharField(max_length=140, default="Element description", blank=True)
+    order = models.PositiveSmallIntegerField(default=0, blank=False, null=False)
+    class Meta:
+        abstract = True
+        ordering = ['order']
     def __str__(self):
         return self.title
+
+class GalleryEmbed(GalleryElement):
+    job = models.ForeignKey(Job, related_name='embeds', on_delete=models.CASCADE)
+    body = models.TextField(default="Embed iframe")
 
 def validate_image(image):
     max_width = 1680
@@ -42,13 +47,7 @@ def validate_image(image):
     if width > max_width or height > max_height:
         raise ValidationError(error_message)
 
-class JobImage(models.Model):
+class GalleryImage(GalleryElement):
     job = models.ForeignKey(Job, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/jobs/', default='/default/img.png', validators=[validate_image])        
-    title = models.CharField(max_length=80, default="Image title", blank=True)
-    description = models.CharField(max_length=140, default="Image description", blank=True)    
     is_cover = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.title
-

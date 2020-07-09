@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     
     'django_unused_media',
     'sorl.thumbnail',
-
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [
