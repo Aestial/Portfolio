@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import WorkExperience, EducationExperience, Certification, Skill, Idiom
+from .models import WorkExperience, EducationExperience, Certification, Skill, Language
 
 # Create your views here.
 def about(request):
@@ -7,12 +7,12 @@ def about(request):
     eduexp = EducationExperience.objects.order_by('-start_date')
     certs = Certification.objects.all
     skills = Skill.objects.all
-    idioms = Idiom.objects.all
+    languages = Language.objects.all
     return render(request, 'about/about.html', 
     {
         'workexp': workexp,
         'eduexp': eduexp,
         'certs': certs,
         'skills': skills,
-        'idioms': idioms,        
+        'languages': languages,        
     })

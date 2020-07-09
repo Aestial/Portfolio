@@ -180,14 +180,14 @@
                 <div class="col-2 pr-0 d-none d-lg-block">
                 </div>
                 <div class="col-11 col-lg-9 text-justify text-lg-left">
-                    {% for idiom in idioms.all %}
+                    {% for language in languages.all %}
                     <div class="row align-items-center">
                         <div class="col-5 pr-0">
                             <a class="fa fa-icon fa-globe p-1"></a>
-                            <span class="align-text-bottom pl-lg-4">{{ idiom.name }}</span>
+                            <span class="align-text-bottom pl-lg-4">{{ language.name }}</span>
                         </div>
                         <div class="col-7">
-                            <span class="align-text-bottom">{{ idiom.proficiency }}</span>                            
+                            <span class="align-text-bottom">{{ language.proficiency }}</span>                            
                         </div>
                     </div>
                     {% endfor %}

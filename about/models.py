@@ -58,7 +58,7 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
-class Idiom(models.Model):
+class Language(models.Model):
     name = models.CharField(max_length=60)
     proficiency = models.CharField(max_length=100)
 
