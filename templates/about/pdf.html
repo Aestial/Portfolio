@@ -37,9 +37,9 @@
                 </div>
                 {% for exp in workexp.all %}
                 <div class="row justify-content-center py-2">
-                    <div class="col-1 pr-0">
+                    <!-- <div class="col-1 pr-0">
                         {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
-                    </div>
+                    </div> -->
                     <div class="col-11 text-justify text-lg-left">
                         <div class="col-12">
                             <h5 class="font-weight-bold">
@@ -51,11 +51,11 @@
                                 {{ exp.place }}
                             </span>
                         </div>
-                        <!-- <div class="col-8 d-lg-none">
+                        <div class="col-8 d-lg-none">
                             <p>
                                 {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
                             </p>
-                        </div> -->
+                        </div>
                         <div class="col-12">
                             <p class=" p-0 font-weight-light">
                                 {{ exp.body | safe | linebreaks }}
@@ -76,9 +76,9 @@
                 </div>
                 {% for exp in eduexp.all %}
                 <div class="row justify-content-center py-2">
-                    <div class="col-1 pr-0">
+                    <!-- <div class="col-1 pr-0">
                         {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
-                    </div>
+                    </div> -->
                     <div class="col-11 text-justify text-lg-left">
                         <div class="col-12">
                             <h5 class="font-weight-bold">
@@ -90,21 +90,21 @@
                                 {{ exp.place }}
                             </span>
                         </div>
-                        <!-- <div class="col-8 d-lg-none">
+                        <div class="col-8 d-lg-none">
                             <p>
                                 {{ exp.start_date_pretty }} - {{ exp.end_date_pretty }}
                             </p>
-                        </div> -->
+                        </div>
                         <div class="col-12">
                             <p class=" p-0 font-weight-light">
                                 {{ exp.body | safe | linebreaks }}                            
                             </p>
                         </div>
-                        <!-- <div class="col-12">
+                        <div class="col-12">
                             <p class=" p-0 font-weight-light font-italic">
                                 {{ exp.thesis }}                            
                             </p>
-                        </div> -->
+                        </div>
                     </div>            
                 </div>            
                 {% endfor %}
