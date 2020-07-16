@@ -42,27 +42,28 @@ function barman(count, parent, params) {
             container.getChildAt(barCount-1).delete();
     }
     this.keyboardInput = function (n) {
-        let evenMultiplier = 0;        
-        for (let i = 1; i <= n; i++) {
-            evenMultiplier += (i % 2 != 0) ? 1 : 0;
-            const x = (evenMultiplier) * params.size + (params.size/2);
-            const y = i * params.size + params.size/2;
-            let keyValue = "";
-            if (i == 10) keyValue = String(0);
-            else keyValue = String(i);            
-            let keyObject = keyboard(keyValue);    
-            keyObject.release = () => { // keyObject.press 
-                console.log(keyValue);
-                new bar (i, x, y, this.bars, params);
-            };
-        }
+        // BARS
+        // let evenMultiplier = 0;        
+        // for (let i = 1; i <= n; i++) {
+        //     evenMultiplier += (i % 2 != 0) ? 1 : 0;
+        //     const x = (evenMultiplier) * params.size + (params.size/2);
+        //     const y = i * params.size + params.size/2;
+        //     let keyValue = "";
+        //     if (i == 10) keyValue = String(0);
+        //     else keyValue = String(i);            
+        //     let keyObject = keyboard(keyValue);    
+        //     keyObject.release = () => { // keyObject.press 
+        //         console.log(keyValue);
+        //         new bar (i, x, y, this.bars, params);
+        //     };
+        // }
         // TRASH
-        let backspaceKeyObject = keyboard("Backspace");    
+        // let backspaceKeyObject = keyboard("Backspace");    
         // backspaceKeyObject.release = () => {
         //     this.deleteLastChild(this.bars);            
         // };
         let deleteKeyObject = keyboard("Delete");    
-        backspaceKeyObject.release = deleteKeyObject.release = () => {            
+        deleteKeyObject.release = deleteKeyObject.release = () => {            
             this.deleteLastChild(this.bars);
         };
     }

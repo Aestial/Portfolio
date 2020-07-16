@@ -71,6 +71,16 @@ window.onload = function ()
     new grid(GRID_SIZE, app.stage,grid_params, grid_params);
     new barman(MAX_VALUE, app.stage, barman_params);
 
+    var input = new PIXI.TextInput({
+        input: {fontSize: '20px'}, 
+        box: {fill: 0xEEEEEE,}
+    })
+    input.x = 10;
+    input.y = width/2;
+    input.placeholder = 'Enter your Text...';
+    app.stage.addChild(input);
+    input.focus();
+
     window.addEventListener("resize", resize);
     resize();
 }
