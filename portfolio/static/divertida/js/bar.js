@@ -7,6 +7,7 @@ function bar(value, x, y, parent, params) {
         this.alpha = params.activeAlpha;
         this.dragging = true;
         this.select();
+        this.sound.play();
     }    
     this.onDragEnd = function () {
         this.alpha = params.normalAlpha;
@@ -16,6 +17,7 @@ function bar(value, x, y, parent, params) {
         if (this.x < params.width/2 + 2*params.size && this.x > params.width/2 - 2*params.size && this.y > params.height - 2*params.size) {
             this.delete();
         }
+        this.sound.play();
     }
     this.onDragMove = function () {
         if (this.dragging) {
@@ -47,6 +49,7 @@ function bar(value, x, y, parent, params) {
     this.sprite.value = value;
     this.sprite.bar = this;
     this.sprite.alpha = params.normalAlpha;
+    this.sprite.sound = params.sounds.clickSoft;
     this.sprite.x = x;
     this.sprite.y = y;
     const xanchor = (value % 2 == 0) ? -0.5/value : 0;

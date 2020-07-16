@@ -8,7 +8,7 @@
             <div class="container py-4 bg-white font-weight-bold d-flex text-left justify-content-between">
                 <div class="col-12 col-sm-8 d-flex">
                     <div class="col-3">
-                        <img class="img-fluid" src="{% static 'divertida/img/rods-logo.jpg' %}">                        
+                        <img class="img-fluid" src="{% static 'divertida/img/bars-logo.jpg' %}">                        
                     </div>           
                     <div class="col-7 container">
                         <p class="h3 text-danger font-weight-bold text-uppercase">Material</p>
@@ -79,10 +79,13 @@
 {% block scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.0/pixi.min.js"></script>
 <script src="{% static 'divertida/js/PIXI.TextInput.min.js' %}"></script>
-<script>    
+<script src="{% static 'divertida/js/pixi-sound.js' %}"></script>
+<script>
     // USE THIS TO RETRIEVE STATIC FILES (Like Textures) TO PIXI.JS
-    let logoTexture = PIXI.Texture.from("{% static 'divertida/img/comprender-logo.png' %}");
-    let trashTexture = PIXI.Texture.from("{% static 'divertida/img/trash-icon.png' %}"); 
+    const logoTexture = PIXI.Texture.from("{% static 'divertida/img/comprender-logo.png' %}");
+    const trashTexture = PIXI.Texture.from("{% static 'divertida/img/trash-icon.png' %}"); 
+    const clickSoundPath = "{% static 'divertida/sounds/clickhard.wav' %}";    
+    const clickSoftSoundPath = "{% static 'divertida/sounds/clicksoft.wav' %}";    
 </script>
 
 <script src="{% static 'divertida/js/grid.js' %}"></script>
