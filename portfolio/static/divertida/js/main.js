@@ -1,4 +1,4 @@
-const GRID_SIZE = { x: 30, y: 22 };
+const GRID_SIZE = { x: 27, y: 20 };
 const MAX_VALUE = 10;
 
 const UNIT_SIZE_PIXELS = 24;
@@ -14,12 +14,12 @@ const UNIT_COLORS = [
     0x406AF0, //#406AF0
     0xF57035, //#F57035
 ];
-const UNIT_NORMAL_ALPHA = 0.85;
-const UNIT_ACTIVE_ALPHA = 0.35;
+const UNIT_NORMAL_ALPHA = 0.925;
+const UNIT_ACTIVE_ALPHA = 0.5;
 const DOUBLE_TAP_THRESHOLD = 420;
 
-const width = 790; // default: 672
-const height = 590; // default: 672
+const width = 800; // default: 672
+const height = 560; // default: 672
 const aspectRatio = width/height;
 
 // Create a Pixi Application
@@ -36,7 +36,7 @@ let app = new PIXI.Application({
 let grid_params = {
     size: UNIT_SIZE_PIXELS,
     offset: {
-        x: UNIT_SIZE_PIXELS * 2,
+        x: UNIT_SIZE_PIXELS * 6,
         y: UNIT_SIZE_PIXELS,
     }
 };
@@ -68,8 +68,63 @@ window.onload = function ()
     canvas_container.appendChild(app.view);
     app.view.className = "shadow";
 
+    // TITLE
+    var logoSprite = new PIXI.Sprite(logoTexture);
+    logoSprite.anchor.set(0, 1);
+    logoSprite.x = 8;
+    logoSprite.y = 80;
+    logoSprite.width = 30;
+    logoSprite.height = 55;
+    console.log(logoSprite);
+    const style = new PIXI.TextStyle({
+        fontFamily: 'Chilanka',
+        fontSize: 16,
+        // fontStyle: 'italic',
+        fontWeight: 'bold',
+        fill: '#444E8E', // ['#ffffff', '#00ff99'], // gradient
+        stroke: '#eaeaea',
+        strokeThickness: 0,
+        dropShadow: false,
+        dropShadowColor: '#2f2f2f',
+        dropShadowBlur: 2,
+        dropShadowAngle: Math.PI / 6,
+        dropShadowDistance: 1,
+        wordWrap: true,
+        // wordWrapWidth: params.size,
+    });
+    let text = new PIXI.Text('Comprender', style);
+    text.x = 30;
+    text.y = 60;
+
+    app.stage.addChild(logoSprite);
+    app.stage.addChild(text);
+
+    // INPUT 
+    var input = new PIXI.TextInput({
+        input: {
+            fontFamily: 'Chilanka',
+            fontSize: '19px',
+            width: '120px',
+            height: '140px',
+            multiline: true,
+        }, 
+        box: {fill: 0xEEEEEE,}
+    });
+    input.x = 10;
+    input.y = 100;
+    input.placeholder = 'Ingresa aquí el texto.';
+    console.log(input.htmlInput);
+    app.stage.addChild(input);
+    // input.focus();
+
+    // TEXTAREA
+    // var textarea = new PIXI.Textarea();
+    // textarea.x = 10;
+    // textarea.y = 100;
+    // app.stage.addChild(textarea);
+
     new grid(GRID_SIZE, app.stage,grid_params, grid_params);
-    new barman(MAX_VALUE, app.stage, barman_params);
+    new barman(MAX_VALUE, app.stage, barman_params);    
 
     window.addEventListener("resize", resize);
     resize();

@@ -31,15 +31,15 @@ function button(value, x, y, parent, params) {
         'pointertap', tapListener, false
     );
     const style = new PIXI.TextStyle({
-        fontFamily: 'Arial',
-        fontSize: 20,
+        fontFamily: 'Chilanka',
+        fontSize: 18,
         // fontStyle: 'italic',
-        // fontWeight: 'bold',
-        fill: '#fafafa', // ['#ffffff', '#00ff99'], // gradient
-        stroke: '#8A94A3',
-        strokeThickness: 1,
-        dropShadow: true,
-        dropShadowColor: '#5f5f5f',
+        fontWeight: 'bold',
+        fill: '#444E5E', // ['#ffffff', '#00ff99'], // gradient
+        stroke: '#eaeaea',
+        strokeThickness: 0,
+        dropShadow: false,
+        dropShadowColor: '#2f2f2f',
         dropShadowBlur: 2,
         dropShadowAngle: Math.PI / 6,
         dropShadowDistance: 1,
@@ -48,7 +48,7 @@ function button(value, x, y, parent, params) {
     });
     const text = new PIXI.Text(String(value), style);    
     text.anchor.set(0.5);
-    text.x = params.size/2;
+    text.x = - params.size;
     // text.y = -params.size/2;
     this.sprite.addChild(text);
     parent.addChild(this.sprite);
