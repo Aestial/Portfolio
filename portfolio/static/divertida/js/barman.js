@@ -7,10 +7,10 @@ function barman(count, parent, params) {
         let evenMultiplier = 0;        
         for (let i = 1; i <= n; i++) {            
             evenMultiplier += (i % 2 != 0) ? 1 : 0;
-            const btnX = 0;
-            const btnY = i * params.size + params.size/2;
+            const btnX = 50;
+            const btnY = i * params.size + params.size/2 + 240;
             let buttonObject = button(i, btnX, btnY, this.buttons, params);
-            const x = (evenMultiplier) * params.size + (3*params.size/2);
+            const x = (evenMultiplier) * params.size + (11*params.size/2);
             const y = i * params.size + params.size/2;
             buttonObject.onTap = () => {
                 console.log("Barman: " + i);
