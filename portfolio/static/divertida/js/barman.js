@@ -15,6 +15,7 @@ function barman(count, parent, params) {
             buttonObject.onTap = () => {
                 console.log("Barman: " + i);
                 new bar(i, x, y, this.bars, params);
+                params.sounds.click.play();
             }
         }
         // TRASH

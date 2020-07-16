@@ -19,7 +19,7 @@ const UNIT_ACTIVE_ALPHA = 0.5;
 const DOUBLE_TAP_THRESHOLD = 420;
 
 const width = 800; // default: 672
-const height = 560; // default: 672
+const height = 550; // default: 672
 const aspectRatio = width/height;
 
 // Create a Pixi Application
@@ -30,7 +30,7 @@ let app = new PIXI.Application({
     transparent: false,
     resolution: window.devicePixelRatio || 1,
     autoResize: true,
-    backgroundColor: 0xE1E2E6
+    backgroundColor: 0xEDEEEF,
 });
 
 let grid_params = {
@@ -68,6 +68,14 @@ window.onload = function ()
     canvas_container.appendChild(app.view);
     app.view.className = "shadow";
 
+    const clickSound = PIXI.sound.Sound.from(clickSoundPath);
+    const clickSoftSound = PIXI.sound.Sound.from(clickSoftSoundPath);
+
+    barman_params.sounds = {
+        click: clickSound,
+        clickSoft: clickSoftSound,
+    };
+
     // TITLE
     var logoSprite = new PIXI.Sprite(logoTexture);
     logoSprite.anchor.set(0, 1);
@@ -75,7 +83,6 @@ window.onload = function ()
     logoSprite.y = 80;
     logoSprite.width = 30;
     logoSprite.height = 55;
-    console.log(logoSprite);
     const style = new PIXI.TextStyle({
         fontFamily: 'Chilanka',
         fontSize: 16,
@@ -113,15 +120,8 @@ window.onload = function ()
     input.x = 10;
     input.y = 100;
     input.placeholder = 'Ingresa aquí el texto.';
-    console.log(input.htmlInput);
     app.stage.addChild(input);
-    // input.focus();
-
-    // TEXTAREA
-    // var textarea = new PIXI.Textarea();
-    // textarea.x = 10;
-    // textarea.y = 100;
-    // app.stage.addChild(textarea);
+    input.focus();
 
     new grid(GRID_SIZE, app.stage,grid_params, grid_params);
     new barman(MAX_VALUE, app.stage, barman_params);    
