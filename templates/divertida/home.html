@@ -21,10 +21,12 @@
                     </div>                                
                 </div>                
             </div>
-            <div class="container py-5 bg-warning chilanka text-center text-xxlarge d-block d-sm-none">
+            <div class="container py-5 bg-warning chilanka text-center text-xxlarge d-none">
                 <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
-                <p class="h1 font-weight-bold p-4">Disponible sólo en escritorio</p>
-                <span class="p-4 text-xlarge">Para disfrutar de la experiencia, cambia a una pantalla más grande.</span>    
+                <p class="h1 font-weight-bold p-3">No disponible en celular</p>
+                <p class="h1 font-weight-bold">:(</p>
+                <p class="h3 font-weight-bold p-3">Cambia a tablet o computadora.</p>
+                <span class="p-3 text-xlarge">Para disfrutar de la experiencia, cambia a una pantalla más grande.</span>    
             </div>    
             <div class="bg-title chilanka container d-flex text-white font-weight-bold">
                 <div class="col-2 d-none d-sm-block p-3">
@@ -38,30 +40,34 @@
                 </div>                
             </div>            
         </div>
-        <div class="container bg-white d-none d-sm-block py-3 pb-4">
-            <div id="pixi-canvas-container" class="p-4"></div>
-            <a type="button" class="btn btn-info text-white btn-lg shadow" data-toggle="modal" data-target="#canvasModal">Instrucciones</a>
+        <div class="container chilanka bg-white d-block py-3 pb-4">
+            <div class="p-1 p-lg-4">
+                <div id="pixi-canvas-container" class=""></div>
+            </div>
+            <div class="p-3">
+                <a type="button" class="btn btn-info text-white btn-lg shadow" data-toggle="modal" data-target="#canvasModal">Instrucciones</a>
+            </div>            
         </div>       
         <!-- Modal -->
         <div class="modal fade" id="canvasModal" tabindex="-1" role="dialog" aria-labelledby="Interactive Modal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog chilanka" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLongTitle">Desarrollo de la actividad</h4>
+                <p class="modal-title h3" id="exampleModalLongTitle">Desarrollo de la actividad</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body h5">
                     <div class="container-fluid text-left">
                         <ul>
-                            <li>En tu pizarra forma una pirámide de regletas.</li>
-                            <li>Escribe a la derecha el color de cada regleta.</li>
-                            <li>Encierra la inicial de cada color.</li>
+                            <li>En tu pizarra forma una pirámide de regletas.</li></br>
+                            <li>Escribe a la derecha el color de cada regleta.</li></br>
+                            <li>Encierra la inicial de cada color.</li></br>
                             <li>Si alguna inicial se repite toma las regletas y compara
-                                su tamaño.</li>
+                                su tamaño.</li></br>
                             <li>La inicial de la regleta más grande escríbela con
-                                mayúscula y la de menor tamaño con minúscula.</li>
+                                mayúscula y la de menor tamaño con minúscula.</li></br>
                         </ul>
                     </div>
                 </div>

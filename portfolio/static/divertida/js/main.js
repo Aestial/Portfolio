@@ -18,7 +18,7 @@ const UNIT_NORMAL_ALPHA = 0.925;
 const UNIT_ACTIVE_ALPHA = 0.5;
 const DOUBLE_TAP_THRESHOLD = 420;
 
-const width = 800; // default: 672
+const width = 810; // default: 672
 const height = 550; // default: 672
 const aspectRatio = width/height;
 
@@ -133,10 +133,12 @@ window.onload = function ()
 function resize() {
     let w = getParentDivWidth();
     let h = getParentDivHeight();
-    // Landscape
-    if (w > h)  w = h * aspectRatio;
-    // Portrait
-    else  h = w / aspectRatio;
+    // CHECK RELIABILITY
+    // // Landscape
+    // if (w > h)  w = h * aspectRatio;
+    // // Portrait
+    // else  h = w / aspectRatio;
+    h = w / aspectRatio;
     app.stage.scale.set(w / width, h / height);
     app.renderer.resize(w, h);
 }
