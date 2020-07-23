@@ -1,0 +1,103 @@
+{% extends 'divertida/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+<main role="main">
+    <section class="text-center bg-green">
+        <div class="container-fluid">            
+            <div class="container py-4 bg-white font-weight-bold d-flex text-left justify-content-between">
+                <div class="col-12 col-sm-8 d-flex">
+                    <div class="col-3">
+                        <img class="img-fluid" src="{% static 'divertida/img/bars-logo.jpg' %}">                        
+                    </div>           
+                    <div class="col-7 container">
+                        <p class="h3 text-danger font-weight-bold text-uppercase">Material</p>
+                        <p class="h4">Regletas</p>
+                    </div>
+                </div>
+                <div class="col-3 d-none d-sm-block">
+                    <div class="container-fluid">
+                        <img class="img-fluid" src="{% static 'divertida/img/logo-bg.jpg' %}">    
+                    </div>                                
+                </div>                
+            </div>
+            <div class="container py-5 bg-warning chilanka text-center text-xxlarge d-none">
+                <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                <p class="h1 font-weight-bold p-3">No disponible en celular</p>
+                <p class="h1 font-weight-bold">:(</p>
+                <p class="h3 font-weight-bold p-3">Cambia a tablet o computadora.</p>
+                <span class="p-3 text-xlarge">Para disfrutar de la experiencia, cambia a una pantalla más grande.</span>    
+            </div>    
+            <div class="bg-title chilanka container d-flex text-white font-weight-bold">
+                <div class="col-2 d-none d-sm-block p-3">
+                    <span class="h4 align-middle">ficha</span>
+                </div>
+                <div class="bg-title-index col-2 col-sm-1 p-3">
+                    <span class="h3 font-weight-bold">1</span>                                      
+                </div>
+                <div class="col-10 col-sm-9 align-middle p-3">
+                    <span class="h4">"Sumas y restas con literales"</span>                                      
+                </div>                
+            </div>            
+        </div>
+        <div class="container chilanka bg-white d-block py-3 pb-4">
+            <div class="p-1 p-lg-4">
+                <div id="pixi-canvas-container" class=""></div>
+            </div>
+            <div class="p-3">
+                <a type="button" class="btn btn-info text-white btn-lg shadow" data-toggle="modal" data-target="#canvasModal">Instrucciones</a>
+            </div>            
+        </div>       
+        <!-- Modal -->
+        <div class="modal fade" id="canvasModal" tabindex="-1" role="dialog" aria-labelledby="Interactive Modal" aria-hidden="true">
+            <div class="modal-dialog chilanka" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <p class="modal-title h3" id="exampleModalLongTitle">Desarrollo de la actividad</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body h5">
+                    <div class="container-fluid text-left">
+                        <ul>
+                            <li>En tu pizarra forma una pirámide de regletas.</li></br>
+                            <li>Escribe a la derecha el color de cada regleta.</li></br>
+                            <li>Encierra la inicial de cada color.</li></br>
+                            <li>Si alguna inicial se repite toma las regletas y compara
+                                su tamaño.</li></br>
+                            <li>La inicial de la regleta más grande escríbela con
+                                mayúscula y la de menor tamaño con minúscula.</li></br>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.0/pixi.min.js"></script>
+<script src="{% static 'divertida/js/PIXI.TextInput.min.js' %}"></script>
+<script src="{% static 'divertida/js/pixi-sound.js' %}"></script>
+<script>
+    // USE THIS TO RETRIEVE STATIC FILES (Like Textures) TO PIXI.JS
+    const logoTexture = PIXI.Texture.from("{% static 'divertida/img/comprender-logo.png' %}");
+    const trashTexture = PIXI.Texture.from("{% static 'divertida/img/trash-icon.png' %}"); 
+    const clickSoundPath = "{% static 'divertida/sounds/clickhard.wav' %}";    
+    const clickSoftSoundPath = "{% static 'divertida/sounds/clicksoft.wav' %}";    
+</script>
+
+<script src="{% static 'divertida/js/grid.js' %}"></script>
+<script src="{% static 'divertida/js/keyboard.js' %}"></script>
+<script src="{% static 'divertida/js/button.js' %}"></script>
+<script src="{% static 'divertida/js/bar.js' %}"></script>
+<script src="{% static 'divertida/js/barman.js' %}"></script>
+<script src="{% static 'divertida/js/regletas.js' %}"></script>
+{% endblock %}

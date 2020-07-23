@@ -1,0 +1,46 @@
+{% extends 'divertida/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+<main role="main">
+    <div class="container">
+        <h1 class="text-center pt-4">Divertida-mente!</h1>
+        <br />
+        <br />
+        {% if index %}
+        <h2 class="">Fichas del grado: {{ text }} </h2>
+        {% else %}
+        <h2 class="">Todas las fichas</h2>
+        {% endif %}
+        <hr />
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% for card in cards %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src=""/>
+                            <div class="card-body">
+                                <span class="h4 text-muted">
+                                    ficha {{ card.index }}
+                                </span>
+                                <a href="{% url 'card-detail' card.id %}">
+                                    <p class="card-text h5">
+                                        {{ card.title }}
+                                    </p>
+                                </a>                                
+                                <div class="d-flex justify-content-between align-items-center">                                        
+                                    <small class="text-muted">
+                                        Grado {{ card.grade }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
