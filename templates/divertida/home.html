@@ -7,24 +7,22 @@
         <h1 class="text-center pt-4">Divertida-mente!</h1>
         <br />
         <br />
-        <h2 class="">Grados</h2>
+        <h2 class="">Libros</h2>
         <hr />
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
-                    {% for index, text in choices %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            {% with 'divertida/img/'|add:text|add:'.jpg' as img_static %}
-                            <img class="card-img-top" src="{% static img_static %}"/>
-                            {% endwith %}
+                    {% for book in books %}
+                    <div class="col-6 col-md-4">
+                        <div class="card mb-4 shadow-sm">                            
+                            <img class="card-img-top" src="{{ book.image.url }}"/>                            
                             <div class="card-body">          
-                                <a href="{% url 'grade-cards' index %}">
+                                <a href="{% url 'bookcards' book.title %}">
                                     <span class="h4 text-muted">
-                                        Grado {{ index }}
+                                        {{ book.title }}
                                     </span>
                                     <p class="card-text h5">
-                                        {{ text }}
+                                        {{ book.description }}
                                     </p>
                                 </a>
                             </div>
