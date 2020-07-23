@@ -27,7 +27,7 @@
                 <p class="h1 font-weight-bold">:(</p>
                 <p class="h3 font-weight-bold p-3">Cambia a tablet o computadora.</p>
                 <span class="p-3 text-xlarge">Para disfrutar de la experiencia, cambia a una pantalla más grande.</span>    
-            </div>    
+            </div> 
             <div class="bg-title chilanka container d-flex text-white font-weight-bold">
                 <div class="col-2 d-none d-sm-block p-3">
                     <span class="h4 align-middle">ficha</span>
@@ -36,14 +36,23 @@
                     <span class="h3 font-weight-bold">{{ card.index }}</span>                                      
                 </div>
                 <div class="col-10 col-sm-9 align-middle p-3">
-                    <span class="h4">{{ card.title }}</span>                                      
+                    <span class="h4">"{{ card.title }}"</span>                                      
                 </div>                
             </div>            
         </div>
         <div class="container chilanka bg-white d-block py-3 pb-4">
+            {% if not card.interactive.body %}
+            <div class="container py-5 bg-warning chilanka text-center text-xlarge">
+                <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                <p class="h1 font-weight-bold p-3">Interactivo en construcción</p>
+                <p class="h1 font-weight-bold"></p>
+                <p class="h3 font-weight-bold p-3">ficha disponible próximamente...</p>
+                <span class="p-3 text-xlarge">¡Estamos trabajando en crear nuevos interactivos!</span>    
+            </div> 
+            {% endif %}
             <div class="p-1 p-lg-4">
                 <div id="pixi-canvas-container" class=""></div>
-            </div>
+            </div>            
             <div class="p-3">
                 <a type="button" class="btn btn-info text-white btn-lg shadow" data-toggle="modal" data-target="#canvasModal">Instrucciones</a>
             </div>            
@@ -60,7 +69,7 @@
                 </div>
                 <div class="modal-body h5">
                     <div class="container-fluid text-left">
-                        {{ card.instructions.first.body }}
+                        {{ card.instructions.first.body | safe | linebreaks }}
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -75,7 +84,6 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- {{ card.interactive.body | safe | linebreaks }} -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.0/pixi.min.js"></script>
 <script src="{% static 'divertida/js/PIXI.TextInput.min.js' %}"></script>
