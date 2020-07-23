@@ -3,8 +3,8 @@ from .models import Card, Interactive, YEAR_GRADE
 
 # Create your views here.
 def home(request):
-    grade_choices = YEAR_GRADE
-    return render(request, 'divertida/home.html', {'grade_choices':grade_choices })
+    choices = YEAR_GRADE
+    return render(request, 'divertida/home.html', {'choices':choices})
 
 def all(request):
     cards = Card.objects.all

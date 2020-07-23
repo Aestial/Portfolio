@@ -1,6 +1,13 @@
 from django.db import models
 
 # Create your models here.
+
+GRADE_OPTIONS = (
+    ('K', 'Preescolar'),
+    ('P', 'Primaria'),
+    ('S', 'Secundaria'),
+)
+
 YEAR_GRADE = (
     ('1', 'Primero'),
     ('2', 'Segundo'),
@@ -19,7 +26,8 @@ class Interactive(models.Model):
 
 class Card(models.Model):
     index = models.IntegerField()
-    grade = models.CharField(max_length=1, choices=YEAR_GRADE)
+    grade = models.CharField(max_length=1, choices=GRADE_OPTIONS)
+    # year = models.CharField(max_length=1, choices)
     title = models.CharField(max_length=200)
     interactive = models.ForeignKey(Interactive, related_name='interactive', on_delete=models.DO_NOTHING)
 

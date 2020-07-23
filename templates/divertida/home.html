@@ -12,10 +12,12 @@
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
-                    {% for index, text in grade_choices %}
+                    {% for index, text in choices %}
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src=""/>
+                            {% with 'divertida/img/'|add:text|add:'.jpg' as img_static %}
+                            <img class="card-img-top" src="{% static img_static %}"/>
+                            {% endwith %}
                             <div class="card-body">          
                                 <a href="{% url 'grade-cards' index %}">
                                     <span class="h4 text-muted">
