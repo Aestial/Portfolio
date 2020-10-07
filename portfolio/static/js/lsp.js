@@ -87,6 +87,7 @@ function init() {
         weight: { type: "f", value: 0 },
         offset: {type: "f", value: 0.0 }
         },
+        transparent: true,
         vertexShader: document.getElementById( 'vertexShader' ).textContent,
         fragmentShader: document.getElementById( 'fragmentShader' ).textContent
     } );
@@ -96,7 +97,7 @@ function init() {
         tDisp: { type: "t", value: displacementTexture },
         time: { type: "f", value: 0 },
         weight: { type: "f", value: 0 },
-        offset: {type: "f", value: 0.01 }
+        offset: {type: "f", value: 0.02 }
         },
         vertexShader: document.getElementById( 'vertexShader' ).textContent,
         fragmentShader: document.getElementById( 'fragmentShader' ).textContent
@@ -106,8 +107,8 @@ function init() {
     // outlineMesh = new THREE.Mesh( new THREE.IcosahedronGeometry( 1, 5 ), outlineMaterial );
     // outlineMesh.material.depthWrite = false;
     // outlineMesh.quaternion = mesh.quaternion;
-    //mesh.rotation.y = 2* Math.PI / 3;
-    //outlineMesh.rotation.y = 2* Math.PI / 3;
+    // mesh.rotation.y = 2* Math.PI / 3;
+    // outlineMesh.rotation.y = 2* Math.PI / 3;
     mesh.rotation.y = Math.PI / 2;
     // outlineMesh.rotation.y = Math.PI / 2;
     // outScene.add( outlineMesh );
@@ -252,7 +253,7 @@ function render() {
     faceTexture.needsUpdate = true;
     }
     
-    renderer.render( outScene, camera );
+    // renderer.render( outScene, camera );
     renderer.render( scene, camera );
     requestAnimationFrame( render );
 

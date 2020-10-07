@@ -393,7 +393,7 @@ void main() {
     vec4 faceColor = texture2D( tFace, vUv );
     vec3 color = mix( diffColor.rgb, faceColor.rgb, faceColor.a );
     //vec4 color = vec4(diffColor + (1.0-faceColor), 1.0); 
-    vec4 finalColor = vec4(color,1.0);
+    vec4 finalColor = vec4(color, diffColor.a);
 
     float diffuse_value1 = .0015 * max(dot(vNormal, vec3( -490.0, 29.8, -85.8 ) ), 0.0);
     float diffuse_value2 = .0005 * max(dot(vNormal, vec3( -460.0, 40.27, 187.4 ) ), 0.0);
@@ -404,7 +404,7 @@ void main() {
     //color *= face;
 
     if (offset > 0.0){
-    gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+    gl_FragColor = vec4(0.0,0.0,0.0,0.0);
     }else {
     gl_FragColor = finalColor;
     }
@@ -423,7 +423,7 @@ void main() {
 float PI = 3.14159265358979323846264;
 
 void main() {
-    gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+    gl_FragColor = vec4(1.0,1.0,1.0,1.0);
 }
 </script>
 <script>
