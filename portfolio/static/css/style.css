@@ -125,3 +125,10 @@ body {
     overflow-x: hidden;
     width: 100%;
 }
+
+.store-badge-app-store {
+    margin: 30px;
+}   
+.store-badge-google-play {
+    margin: 30px;
+}   
