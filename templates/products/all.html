@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'products/base.html' %}
 {% load static %}
 {% load thumbnail %}
 {% block content %}
@@ -12,7 +12,7 @@
                 Game Studio
             </p>
             <p>
-                <a href="mailto:jaimevazz@gmail.com" class="btn btn-primary mt-2">Contact me!</a>
+                <a href="mailto:jaimevazz@gmail.com" class="btn btn-primary mt-2">Contact us!</a>
                 <!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
             </p>                
         </div>
@@ -24,8 +24,8 @@
                     {% for product in products.all %}
                     <div class="col-sm-6 col-lg-4 px-1">                        
                         <div class="card mb-2 shadow-sm cover">    
-                            {% thumbnail product.cover.image "480x360" crop="center" as im %}
-                            <!-- <img class="card-img cover-img" src="{{ im.url }}" > -->
+                            {% thumbnail product.cover.image "384x288" crop="center" as im %}
+                            <img class="card-img cover-img" src="{{ im.url }}" >
                             {% endthumbnail %}                            
                             <div class="card-img-overlay cover-info d-flex bg-primary">
                                 <div class="container p-4 align-self-center">
@@ -39,14 +39,14 @@
                                             {{ product.summary }}
                                         </p>
                                     </div>
-                                    <div class="col-12">
+                                    <!-- <div class="col-12">
                                         <p class="small text-light">
                                             {{ product.tags }}
                                         </p>
-                                    </div>
+                                    </div> -->
                                     <div class="col-12 align-self-bottom text-right">
                                         <a  
-                                            href="{% url 'detail' product.id %}"
+                                            href="{% url 'product' product.slug %}"
                                             class="fa fa-cover fa-plus-circle text-light"
                                         ></a>
                                         <!-- <a                                              

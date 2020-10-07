@@ -72,10 +72,47 @@
         <div class="album py-2 bg-light">
             <div class="container-fluid">
                 <div class="row">
+                    {% for product in products.all %}
+                    <div class="col-sm-6 col-lg-4 px-1">                        
+                        <div class="card mb-2 shadow-sm cover">    
+                            {% thumbnail product.cover.image "384x288" crop="center" as im %}
+                            <img class="card-img cover-img" src="{{ im.url }}" >
+                            {% endthumbnail %}                            
+                            <div class="card-img-overlay cover-info d-flex bg-primary">
+                                <div class="container p-4 align-self-center">
+                                    <div class="col-12">
+                                        <h4 class="card-text text-light">
+                                            {{ product.title }}
+                                        </h4>                                        
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="text-light">
+                                            {{ product.summary }}
+                                        </p>
+                                    </div>
+                                    <!-- <div class="col-12">
+                                        <p class="small text-light">
+                                            {{ product.tags }}
+                                        </p>
+                                    </div> -->
+                                    <div class="col-12 align-self-bottom text-right">
+                                        <a  
+                                            href="{% url 'product' product.slug %}"
+                                            class="fa fa-cover fa-plus-circle text-light"
+                                        ></a>
+                                        <!-- <a                                              
+                                            class="cover-close fa fa-cover fa-times-circle text-light d-sm-none"
+                                        ></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                     {% for job in jobs.all %}
                     <div class="col-sm-6 col-lg-4 px-1">                        
                         <div class="card mb-2 shadow-sm cover">    
-                            {% thumbnail job.cover.image "320x240" crop="center" as im %}
+                            {% thumbnail job.cover.image "384x288" crop="center" as im %}
                             <img class="card-img cover-img" src="{{ im.url }}" >
                             {% endthumbnail %}                            
                             <div class="card-img-overlay cover-info d-flex bg-primary">
