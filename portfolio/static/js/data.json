@@ -35,6 +35,9 @@ json = `
         "maxAzimuthAngle": 60,
         "minPolarAngle": 50,
         "maxPolarAngle": 120
+    },
+    "statsman": {
+        "enabled": false
     }
 }
 `
