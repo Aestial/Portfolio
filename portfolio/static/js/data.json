@@ -1,0 +1,40 @@
+json = `
+{
+    "renderman": {
+        "width": 300,
+        "height": 300,
+        "alpha": true,
+        "autoClear": false,
+        "clearColor": {
+            "color": "#000000",
+            "alpha": 0
+        },
+        "antialias": true,
+        "cam": {
+            "pos": {
+                "x": 0,
+                "y": 1.5,
+                "z": 1
+            },
+            "near": 0.05,
+            "far": 20,
+            "fov": 30,
+            "base": 1.4
+        },    
+        "exposure": 1.1
+    },
+    "controlman": {
+        "target": {
+            "x": 0,
+            "y": 1.5,
+            "z": 0
+        },
+        "minDistance": 0.6,
+        "maxDistance": 1.2,
+        "minAzimuthAngle": -60,
+        "maxAzimuthAngle": 60,
+        "minPolarAngle": 50,
+        "maxPolarAngle": 120
+    }
+}
+`
